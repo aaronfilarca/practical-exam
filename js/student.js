@@ -106,7 +106,7 @@ function itemWeight(item) {
  * Builds the full grade picture for a student in a course:
  * - rows: one per assessment item, with score/weight/contribution
  * - accumulatedGrade: percentage actually earned so far
- * - achievableToDate: ceiling if every item already due had scored 100%
+ * - achievableToDate: ceiling for every item that is graded or already due
  * - maxFinalGrade: ceiling if every remaining (unscored) item scores 100%
  */
 function computeGradeSummary(studentId, courseId) {
@@ -132,14 +132,6 @@ function computeGradeSummary(studentId, courseId) {
       accumulatedGrade += contribution;
       scoredWeight += weight;
     }
-    if (!isPastDue || hasScore) {
-      // "achievable to date" counts items already due (scored, at their actual
-      // contribution) plus, for consistency, items not yet due are excluded.
-    }
-    if (isPastDue || hasScore) {
-      achievableToDate += hasScore ? contribution : 0;
-    }
-
     return {
       item, category, weight, hasScore,
       score: hasScore ? record.score : null,
@@ -147,12 +139,9 @@ function computeGradeSummary(studentId, courseId) {
     };
   });
 
-  // Achievable-to-date ceiling: sum of weights for items already due (whether
-  // scored or not), each counted at its best-case (100%) contribution, PLUS
-  // actual contribution for items not yet due is excluded (they're in the
-  // future). This represents "what you could already have banked".
+  // Include all graded items plus any ungraded items that are already due.
   achievableToDate = rows
-    .filter(r => r.isPastDue)
+    .filter(r => r.isPastDue || r.hasScore)
     .reduce((sum, r) => sum + r.weight, 0);
 
   const totalWeight = rows.reduce((sum, r) => sum + r.weight, 0);

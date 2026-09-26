@@ -49,15 +49,18 @@ function buildSeedData() {
   const users = [
     { id: 1, role: "Admin", name: "Don Tomas", username: "admin" },
     { id: 2, role: "Professor", name: "Erinn Sanchez", username: "esanchez" },
-
     { id: 3, role: "Student", name: "Aaron Filarca", username: "afilarca" },
     { id: 4, role: "Student", name: "Nicole Monsanto", username: "nmonsanto" },
     { id: 5, role: "Student", name: "Marden Doria", username: "mdoria" },
     { id: 6, role: "Student", name: "Jan Gil Corbita", username: "jgcorbita" },
+    // New Professor added
+    { id: 7, role: "Professor", name: "Maria Santos", username: "msantos" }, 
   ];
 
   const courses = [
     { id: 1, code: "CPE106L-4", title: "Software Design Laboratory", professorId: 2, absenceThreshold: 3, units: 1 },
+    // New Course added
+    { id: 2, code: "CPE107L-4", title: "Computer Architecture Laboratory", professorId: 7, absenceThreshold: 3, units: 1 },
   ];
 
   const enrollments = [
@@ -65,9 +68,13 @@ function buildSeedData() {
     { id: 2, studentId: 4, courseId: 1 },
     { id: 3, studentId: 5, courseId: 1 },
     { id: 4, studentId: 6, courseId: 1 },
+    // Enroll some students in the new course
+    { id: 5, studentId: 3, courseId: 2 },
+    { id: 6, studentId: 4, courseId: 2 },
   ];
 
   const categories = [
+    // Course 1 Categories
     { id: 1, courseId: 1, name: "Lab 1", weight: 5 },
     { id: 2, courseId: 1, name: "Lab 2", weight: 5 },
     { id: 3, courseId: 1, name: "Lab 3", weight: 5 },
@@ -77,9 +84,14 @@ function buildSeedData() {
     { id: 7, courseId: 1, name: "Lab 7", weight: 7 },
     { id: 8, courseId: 1, name: "Practical Exam", weight: 30 },
     { id: 9, courseId: 1, name: "Project", weight: 30 },
+    // Course 2 Categories
+    { id: 10, courseId: 2, name: "Assembly Labs", weight: 40 },
+    { id: 11, courseId: 2, name: "Midterm Exam", weight: 30 },
+    { id: 12, courseId: 2, name: "Final CPU Design", weight: 30 },
   ];
 
   const items = [
+    // Course 1 Items
     { id: 1, courseId: 1, categoryId: 1, title: "Lab 1: Software Relevant Tools, Standards, and Code Versioning using Github", dueDate: addDaysISO(-35), maxPoints: 100 },
     { id: 2, courseId: 1, categoryId: 2, title: "Lab 2: Strings, Lists, Tuples, and Dictionaries", dueDate: addDaysISO(-28), maxPoints: 100 },
     { id: 3, courseId: 1, categoryId: 3, title: "Lab 3: Object Oriented Design and Implementation", dueDate: addDaysISO(-21), maxPoints: 100 },
@@ -89,10 +101,14 @@ function buildSeedData() {
     { id: 7, courseId: 1, categoryId: 7, title: "Lab 7: Data Mining APIs and Interactive Data Visualization", dueDate: addDaysISO(-1), maxPoints: 100 },
     { id: 8, courseId: 1, categoryId: 8, title: "Practical Exam 1", dueDate: addDaysISO(-1), maxPoints: 100 },
     { id: 9, courseId: 1, categoryId: 9, title: "Software Project", dueDate: addDaysISO(14), maxPoints: 100 },
+    // Course 2 Items
+    { id: 10, courseId: 2, categoryId: 10, title: "Lab 1: Intro to MIPS Assembly", dueDate: addDaysISO(-20), maxPoints: 100 },
+    { id: 11, courseId: 2, categoryId: 10, title: "Lab 2: Memory and Registers", dueDate: addDaysISO(-10), maxPoints: 100 },
+    { id: 12, courseId: 2, categoryId: 11, title: "Midterm Architecture Exam", dueDate: addDaysISO(-2), maxPoints: 100 },
   ];
 
   const scores = [
-    // Aaron: 70% banked from the first eight assessments; the project remains unsubmitted.
+    // Course 1 Scores
     { id: 1, itemId: 1, studentId: 3, score: 100 },
     { id: 2, itemId: 2, studentId: 3, score: 100 },
     { id: 3, itemId: 3, studentId: 3, score: 100 },
@@ -102,7 +118,6 @@ function buildSeedData() {
     { id: 7, itemId: 7, studentId: 3, score: 100 },
     { id: 8, itemId: 8, studentId: 3, score: 100 },
 
-    // Nicole: 90% overall, which maps to 1.75 (B) in the CHED 70% scale.
     { id: 9, itemId: 1, studentId: 4, score: 90 },
     { id: 10, itemId: 2, studentId: 4, score: 90 },
     { id: 11, itemId: 3, studentId: 4, score: 90 },
@@ -113,7 +128,6 @@ function buildSeedData() {
     { id: 16, itemId: 8, studentId: 4, score: 90 },
     { id: 17, itemId: 9, studentId: 4, score: 90 },
 
-    // Marden: 96% overall, which maps to 1.25 (A-) in the CHED 70% scale.
     { id: 18, itemId: 1, studentId: 5, score: 96 },
     { id: 19, itemId: 2, studentId: 5, score: 96 },
     { id: 20, itemId: 3, studentId: 5, score: 96 },
@@ -124,7 +138,6 @@ function buildSeedData() {
     { id: 25, itemId: 8, studentId: 5, score: 96 },
     { id: 26, itemId: 9, studentId: 5, score: 96 },
 
-    // Jan: 60% overall, which maps to 5.00 (F).
     { id: 27, itemId: 1, studentId: 6, score: 60 },
     { id: 28, itemId: 2, studentId: 6, score: 60 },
     { id: 29, itemId: 3, studentId: 6, score: 60 },
@@ -134,13 +147,26 @@ function buildSeedData() {
     { id: 33, itemId: 7, studentId: 6, score: 60 },
     { id: 34, itemId: 8, studentId: 6, score: 60 },
     { id: 35, itemId: 9, studentId: 6, score: 60 },
+    
+    // Course 2 Scores (Aaron and Nicole)
+    { id: 36, itemId: 10, studentId: 3, score: 88 },
+    { id: 37, itemId: 11, studentId: 3, score: 92 },
+    { id: 38, itemId: 12, studentId: 3, score: 85 },
+    
+    { id: 39, itemId: 10, studentId: 4, score: 95 },
+    { id: 40, itemId: 11, studentId: 4, score: 98 },
+    { id: 41, itemId: 12, studentId: 4, score: 90 },
   ];
 
   const attendance = [
+    // Course 1
     { id: 1, courseId: 1, studentId: 3, date: addDaysISO(-35), status: "Present" },
     { id: 2, courseId: 1, studentId: 4, date: addDaysISO(-35), status: "Present" },
     { id: 3, courseId: 1, studentId: 5, date: addDaysISO(-35), status: "Present" },
     { id: 4, courseId: 1, studentId: 6, date: addDaysISO(-35), status: "Present" },
+    // Course 2
+    { id: 5, courseId: 2, studentId: 3, date: addDaysISO(-20), status: "Present" },
+    { id: 6, courseId: 2, studentId: 4, date: addDaysISO(-20), status: "Late" },
   ];
 
   return { users, courses, enrollments, categories, items, scores, attendance };
