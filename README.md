@@ -24,8 +24,9 @@ works too. No install step, no dependencies to build — everything else
 (Bootstrap, Bootstrap Icons, Google Fonts) loads from a CDN.
 
 On first load, the app detects that `localStorage` is empty and seeds it
-automatically with a realistic demo dataset (see §4). Use the **Reset demo
-data** button in the navbar at any time to wipe your changes and start over.
+automatically with a realistic CPE106L-4 demo dataset (see §4). Use the
+**Reset demo data** button in the navbar at any time to wipe your changes and
+start over.
 
 ---
 
@@ -58,11 +59,11 @@ based on the active session's role.
 There is no password login — this is a demo system. Use the **quick-switch
 bar** in the navbar to instantly become any seeded user:
 
-| Role      | Seeded accounts                                             |
-|-----------|---------------------------------------------------------------|
-| Admin     | Dr. Elena Reyes                                               |
-| Professor | Prof. Marco Villanueva (CS101), Prof. Angela Cruz (IT205)      |
-| Student   | Juan Dela Cruz, Maria Santos, Paolo Ramos, Kim Aquino          |
+| Role      | Seeded accounts |
+|-----------|-----------------|
+| Admin     | Don Tomas |
+| Professor | Erinn Sanchez |
+| Student   | Aaron Filarca, Nicole Monsanto, Marden Doria, Jan Gil Corbita |
 
 Switching accounts is instant and does not require a page reload.
 
@@ -70,23 +71,33 @@ Switching accounts is instant and does not require a page reload.
 
 ## 4. Seeded demo data — what to look at
 
-The mock data is arranged so every business rule is visible without any
-manual setup:
+The seeded course is **CPE106L-4 — Software Design Laboratory**, based on the
+provided syllabus. Its assessment weights are:
 
-- **CS101 – Data Structures and Algorithms** (Prof. Villanueva, absence
-  threshold **3**): Quizzes 30% / Exams 40% / Courseworks 30%.
-  - Juan Dela Cruz has an ungraded, past-due item ("Programming Project 2")
-    → triggers the **missed activity** warning.
-  - Paolo Ramos has 2 of 3 allowable absences → triggers the **"one absence
-    away"** CHED warning.
-- **IT205 – Software Engineering** (Prof. Cruz, absence threshold **4**):
-  Quizzes 20% / Exams 50% / Courseworks 30%.
-  - Kim Aquino has already reached 4 absences → **CHED breach**, automatic
-    5.00 messaging is shown.
-  - Kim also has an ungraded, past-due "UML Design Document" → missed
-    activity warning.
-- Several items are due within the next 3 days across both courses, to
-  demonstrate the **due-soon** highlight.
+| Assessment | Weight |
+|------------|--------|
+| Lab 1 | 5% |
+| Lab 2 | 5% |
+| Lab 3 | 5% |
+| Lab 4 | 6% |
+| Lab 5 | 6% |
+| Lab 6 | 6% |
+| Lab 7 | 7% |
+| Practical Exam | 30% |
+| Project | 30% |
+
+The mock data is arranged so the grade bands and incomplete-submission flow
+are visible without manual setup:
+
+- **Aaron Filarca** has completed the first eight assessments for a current
+  70.00% grade (numerical grade **3.00**). The 30% Project is still
+  unsubmitted, so the target calculator shows what score is needed to improve.
+- **Nicole Monsanto** has 90% on every assessment, producing numerical grade
+  **1.75**.
+- **Marden Doria** has 96% on every assessment, producing numerical grade
+  **1.25** (the closest available CHED band to an estimated 1.30).
+- **Jan Gil Corbita** has 60% on every assessment, producing numerical grade
+  **5.00 / F**.
 
 ---
 
@@ -147,7 +158,7 @@ its numerical and letter grade equivalent, using the 70%-passing-rate scale:
 | 95–97.99      | 1.25      | A-     | Highly Meritorious     |
 | 91–94.99      | 1.50      | B+     | Meritorious            |
 | 88–90.99      | 1.75      | B      | Very Good              |
-| 85–87.99      | 2.00      | B      | Good                   |
+| 85–87.99      | 2.00      | B-     | Good                   |
 | 81–84.99      | 2.25      | C+     | Satisfactory           |
 | 77–80.99      | 2.50      | C      | Fair                   |
 | 73–76.99      | 2.75      | D+     | Marginal               |
@@ -193,12 +204,29 @@ the active session lives separately under `ched_gls_session_v1`.
 | `scores`      | `{ id, itemId, studentId, score }`                                     |
 | `attendance`  | `{ id, courseId, studentId, date, status }`                            |
 
+### 6.1 JSON import and export
+
+The navbar's **Data** menu provides **Export JSON** and **Import JSON**:
+
+1. Choose **Export JSON** to download the current grade-system data as a
+  dated `.json` backup file.
+2. Choose **Import JSON** and select a file previously exported by the app.
+3. The imported data replaces the current browser data and the active view is
+  refreshed immediately.
+
+Import validation requires all seven collections (`users`, `courses`,
+`enrollments`, `categories`, `items`, `scores`, and `attendance`) to be JSON
+arrays. Import changes are local to the current browser and do not upload
+data anywhere.
+
 ---
 
 ## 7. Known limitations (by design, for a demo)
 
 - No real authentication — anyone can switch to any role from the navbar.
 - Single-browser persistence only; nothing syncs across devices or users.
+- Importing a data file replaces the current local dataset; export a backup
+  first if the existing data must be preserved.
 - Removing a student from a course keeps their historical scores/attendance
   in storage (so re-enrolling restores their record) but hides them from
   view while unenrolled.

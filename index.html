@@ -62,6 +62,16 @@
         <button class="btn btn-sm btn-gold" id="resetDataBtn" title="Reset all data to the original seeded demo set">
           <i class="bi bi-arrow-counterclockwise"></i> Reset demo data
         </button>
+        <div class="dropdown">
+          <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="dataMenuBtn">
+            <i class="bi bi-database"></i> Data
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><button class="dropdown-item" type="button" id="exportDataBtn"><i class="bi bi-download me-2"></i>Export JSON</button></li>
+            <li><button class="dropdown-item" type="button" id="importDataBtn"><i class="bi bi-upload me-2"></i>Import JSON</button></li>
+          </ul>
+          <input type="file" id="importDataFile" accept="application/json,.json" class="d-none">
+        </div>
       </div>
     </div>
   </div>

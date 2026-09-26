@@ -47,134 +47,100 @@ function nextId(list) {
  * ----------------------------------------------------------------------- */
 function buildSeedData() {
   const users = [
-    { id: 1, role: "Admin", name: "Dr. Elena Reyes", username: "admin" },
+    { id: 1, role: "Admin", name: "Don Tomas", username: "admin" },
+    { id: 2, role: "Professor", name: "Erinn Sanchez", username: "esanchez" },
 
-    { id: 2, role: "Professor", name: "Prof. Marco Villanueva", username: "mvillanueva" },
-    { id: 3, role: "Professor", name: "Prof. Angela Cruz", username: "acruz" },
-
-    { id: 4, role: "Student", name: "Juan Dela Cruz", username: "jdelacruz" },
-    { id: 5, role: "Student", name: "Maria Santos", username: "msantos" },
-    { id: 6, role: "Student", name: "Paolo Ramos", username: "pramos" },
-    { id: 7, role: "Student", name: "Kim Aquino", username: "kaquino" },
+    { id: 3, role: "Student", name: "Aaron Filarca", username: "afilarca" },
+    { id: 4, role: "Student", name: "Nicole Monsanto", username: "nmonsanto" },
+    { id: 5, role: "Student", name: "Marden Doria", username: "mdoria" },
+    { id: 6, role: "Student", name: "Jan Gil Corbita", username: "jgcorbita" },
   ];
 
   const courses = [
-    { id: 1, code: "CS101", title: "Data Structures and Algorithms", professorId: 2, absenceThreshold: 3, units: 3 },
-    { id: 2, code: "IT205", title: "Software Engineering", professorId: 3, absenceThreshold: 4, units: 3 },
+    { id: 1, code: "CPE106L-4", title: "Software Design Laboratory", professorId: 2, absenceThreshold: 3, units: 1 },
   ];
 
   const enrollments = [
-    { id: 1, studentId: 4, courseId: 1 },
-    { id: 2, studentId: 5, courseId: 1 },
-    { id: 3, studentId: 6, courseId: 1 },
-    { id: 4, studentId: 4, courseId: 2 },
-    { id: 5, studentId: 7, courseId: 2 },
-    { id: 6, studentId: 5, courseId: 2 },
+    { id: 1, studentId: 3, courseId: 1 },
+    { id: 2, studentId: 4, courseId: 1 },
+    { id: 3, studentId: 5, courseId: 1 },
+    { id: 4, studentId: 6, courseId: 1 },
   ];
 
   const categories = [
-    { id: 1, courseId: 1, name: "Quizzes", weight: 30 },
-    { id: 2, courseId: 1, name: "Exams", weight: 40 },
-    { id: 3, courseId: 1, name: "Courseworks", weight: 30 },
-
-    { id: 4, courseId: 2, name: "Quizzes", weight: 20 },
-    { id: 5, courseId: 2, name: "Exams", weight: 50 },
-    { id: 6, courseId: 2, name: "Courseworks", weight: 30 },
+    { id: 1, courseId: 1, name: "Lab 1", weight: 5 },
+    { id: 2, courseId: 1, name: "Lab 2", weight: 5 },
+    { id: 3, courseId: 1, name: "Lab 3", weight: 5 },
+    { id: 4, courseId: 1, name: "Lab 4", weight: 6 },
+    { id: 5, courseId: 1, name: "Lab 5", weight: 6 },
+    { id: 6, courseId: 1, name: "Lab 6", weight: 6 },
+    { id: 7, courseId: 1, name: "Lab 7", weight: 7 },
+    { id: 8, courseId: 1, name: "Practical Exam", weight: 30 },
+    { id: 9, courseId: 1, name: "Project", weight: 30 },
   ];
 
   const items = [
-    // ---- CS101 : Quizzes (cat 1) ----
-    { id: 1, courseId: 1, categoryId: 1, title: "Quiz 1 - Arrays & Lists", dueDate: addDaysISO(-20), maxPoints: 20 },
-    { id: 2, courseId: 1, categoryId: 1, title: "Quiz 2 - Stacks & Queues", dueDate: addDaysISO(-10), maxPoints: 20 },
-    { id: 3, courseId: 1, categoryId: 1, title: "Quiz 3 - Trees", dueDate: addDaysISO(2), maxPoints: 20 },
-
-    // ---- CS101 : Exams (cat 2) ----
-    { id: 4, courseId: 1, categoryId: 2, title: "Midterm Examination", dueDate: addDaysISO(-8), maxPoints: 100 },
-    { id: 5, courseId: 1, categoryId: 2, title: "Final Examination", dueDate: addDaysISO(21), maxPoints: 100 },
-
-    // ---- CS101 : Courseworks (cat 3) ----
-    { id: 6, courseId: 1, categoryId: 3, title: "Programming Project 1", dueDate: addDaysISO(-15), maxPoints: 50 },
-    { id: 7, courseId: 1, categoryId: 3, title: "Programming Project 2", dueDate: addDaysISO(-1), maxPoints: 50 },
-    { id: 8, courseId: 1, categoryId: 3, title: "Lab Portfolio", dueDate: addDaysISO(9), maxPoints: 50 },
-
-    // ---- IT205 : Quizzes (cat 4) ----
-    { id: 9, courseId: 2, categoryId: 4, title: "Quiz 1 - SDLC Models", dueDate: addDaysISO(-12), maxPoints: 20 },
-    { id: 10, courseId: 2, categoryId: 4, title: "Quiz 2 - Requirements", dueDate: addDaysISO(1), maxPoints: 20 },
-
-    // ---- IT205 : Exams (cat 5) ----
-    { id: 11, courseId: 2, categoryId: 5, title: "Midterm Examination", dueDate: addDaysISO(-6), maxPoints: 100 },
-    { id: 12, courseId: 2, categoryId: 5, title: "Final Examination", dueDate: addDaysISO(24), maxPoints: 100 },
-
-    // ---- IT205 : Courseworks (cat 6) ----
-    { id: 13, courseId: 2, categoryId: 6, title: "UML Design Document", dueDate: addDaysISO(-4), maxPoints: 40 },
-    { id: 14, courseId: 2, categoryId: 6, title: "Sprint Demo 1", dueDate: addDaysISO(3), maxPoints: 40 },
+    { id: 1, courseId: 1, categoryId: 1, title: "Lab 1: Software Relevant Tools, Standards, and Code Versioning using Github", dueDate: addDaysISO(-35), maxPoints: 100 },
+    { id: 2, courseId: 1, categoryId: 2, title: "Lab 2: Strings, Lists, Tuples, and Dictionaries", dueDate: addDaysISO(-28), maxPoints: 100 },
+    { id: 3, courseId: 1, categoryId: 3, title: "Lab 3: Object Oriented Design and Implementation", dueDate: addDaysISO(-21), maxPoints: 100 },
+    { id: 4, courseId: 1, categoryId: 4, title: "Lab 4: Design Patterns and Unit Testing", dueDate: addDaysISO(-14), maxPoints: 100 },
+    { id: 5, courseId: 1, categoryId: 5, title: "Lab 5: Data Modeling and Introduction to SQL", dueDate: addDaysISO(-7), maxPoints: 100 },
+    { id: 6, courseId: 1, categoryId: 6, title: "Lab 6: openGauss", dueDate: addDaysISO(-3), maxPoints: 100 },
+    { id: 7, courseId: 1, categoryId: 7, title: "Lab 7: Data Mining APIs and Interactive Data Visualization", dueDate: addDaysISO(-1), maxPoints: 100 },
+    { id: 8, courseId: 1, categoryId: 8, title: "Practical Exam 1", dueDate: addDaysISO(-1), maxPoints: 100 },
+    { id: 9, courseId: 1, categoryId: 9, title: "Software Project", dueDate: addDaysISO(14), maxPoints: 100 },
   ];
 
-  // Scores: intentionally partial, so the student view has a mix of graded,
-  // ungraded-but-past-due (missed), and upcoming items to demonstrate warnings.
   const scores = [
-    // Juan Dela Cruz (id 4) in CS101 (course 1)
-    { id: 1, itemId: 1, studentId: 4, score: 18 },
-    { id: 2, itemId: 2, studentId: 4, score: 14 },
-    { id: 3, itemId: 4, studentId: 4, score: 78 },
-    { id: 4, itemId: 6, studentId: 4, score: 44 },
-    // item 7 (Programming Project 2, due yesterday) intentionally NOT scored -> missed activity
+    // Aaron: 70% banked from the first eight assessments; the project remains unsubmitted.
+    { id: 1, itemId: 1, studentId: 3, score: 100 },
+    { id: 2, itemId: 2, studentId: 3, score: 100 },
+    { id: 3, itemId: 3, studentId: 3, score: 100 },
+    { id: 4, itemId: 4, studentId: 3, score: 100 },
+    { id: 5, itemId: 5, studentId: 3, score: 100 },
+    { id: 6, itemId: 6, studentId: 3, score: 100 },
+    { id: 7, itemId: 7, studentId: 3, score: 100 },
+    { id: 8, itemId: 8, studentId: 3, score: 100 },
 
-    // Maria Santos (id 5) in CS101
-    { id: 5, itemId: 1, studentId: 5, score: 20 },
-    { id: 6, itemId: 2, studentId: 5, score: 19 },
-    { id: 7, itemId: 4, studentId: 5, score: 91 },
-    { id: 8, itemId: 6, studentId: 5, score: 48 },
-    { id: 9, itemId: 7, studentId: 5, score: 45 },
+    // Nicole: 90% overall, which maps to 1.75 (B) in the CHED 70% scale.
+    { id: 9, itemId: 1, studentId: 4, score: 90 },
+    { id: 10, itemId: 2, studentId: 4, score: 90 },
+    { id: 11, itemId: 3, studentId: 4, score: 90 },
+    { id: 12, itemId: 4, studentId: 4, score: 90 },
+    { id: 13, itemId: 5, studentId: 4, score: 90 },
+    { id: 14, itemId: 6, studentId: 4, score: 90 },
+    { id: 15, itemId: 7, studentId: 4, score: 90 },
+    { id: 16, itemId: 8, studentId: 4, score: 90 },
+    { id: 17, itemId: 9, studentId: 4, score: 90 },
 
-    // Paolo Ramos (id 6) in CS101 - weaker performance, near CHED risk
-    { id: 10, itemId: 1, studentId: 6, score: 10 },
-    { id: 11, itemId: 2, studentId: 6, score: 9 },
-    { id: 12, itemId: 4, studentId: 6, score: 55 },
-    { id: 13, itemId: 6, studentId: 6, score: 28 },
+    // Marden: 96% overall, which maps to 1.25 (A-) in the CHED 70% scale.
+    { id: 18, itemId: 1, studentId: 5, score: 96 },
+    { id: 19, itemId: 2, studentId: 5, score: 96 },
+    { id: 20, itemId: 3, studentId: 5, score: 96 },
+    { id: 21, itemId: 4, studentId: 5, score: 96 },
+    { id: 22, itemId: 5, studentId: 5, score: 96 },
+    { id: 23, itemId: 6, studentId: 5, score: 96 },
+    { id: 24, itemId: 7, studentId: 5, score: 96 },
+    { id: 25, itemId: 8, studentId: 5, score: 96 },
+    { id: 26, itemId: 9, studentId: 5, score: 96 },
 
-    // Juan Dela Cruz (id 4) in IT205 (course 2)
-    { id: 14, itemId: 9, studentId: 4, score: 17 },
-    { id: 15, itemId: 11, studentId: 4, score: 82 },
-    { id: 16, itemId: 13, studentId: 4, score: 34 },
-
-    // Kim Aquino (id 7) in IT205
-    { id: 17, itemId: 9, studentId: 7, score: 19 },
-    { id: 18, itemId: 11, studentId: 7, score: 88 },
-    // item 13 (UML Design Document, due 4 days ago) intentionally NOT scored -> missed activity
-
-    // Maria Santos (id 5) in IT205
-    { id: 19, itemId: 9, studentId: 5, score: 15 },
-    { id: 20, itemId: 11, studentId: 5, score: 70 },
-    { id: 21, itemId: 13, studentId: 5, score: 30 },
+    // Jan: 60% overall, which maps to 5.00 (F).
+    { id: 27, itemId: 1, studentId: 6, score: 60 },
+    { id: 28, itemId: 2, studentId: 6, score: 60 },
+    { id: 29, itemId: 3, studentId: 6, score: 60 },
+    { id: 30, itemId: 4, studentId: 6, score: 60 },
+    { id: 31, itemId: 5, studentId: 6, score: 60 },
+    { id: 32, itemId: 6, studentId: 6, score: 60 },
+    { id: 33, itemId: 7, studentId: 6, score: 60 },
+    { id: 34, itemId: 8, studentId: 6, score: 60 },
+    { id: 35, itemId: 9, studentId: 6, score: 60 },
   ];
 
-  // Attendance logs. Paolo Ramos is deliberately close to the CHED threshold (3)
-  // in CS101, and Kim Aquino has already breached the threshold (4) in IT205.
   const attendance = [
-    { id: 1, courseId: 1, studentId: 4, date: addDaysISO(-20), status: "Present" },
-    { id: 2, courseId: 1, studentId: 4, date: addDaysISO(-13), status: "Excused" },
-    { id: 3, courseId: 1, studentId: 4, date: addDaysISO(-6), status: "Present" },
-
-    { id: 4, courseId: 1, studentId: 5, date: addDaysISO(-20), status: "Present" },
-    { id: 5, courseId: 1, studentId: 5, date: addDaysISO(-13), status: "Present" },
-
-    { id: 6, courseId: 1, studentId: 6, date: addDaysISO(-20), status: "Absent" },
-    { id: 7, courseId: 1, studentId: 6, date: addDaysISO(-13), status: "Absent" },
-    { id: 8, courseId: 1, studentId: 6, date: addDaysISO(-6), status: "Present" },
-    // Paolo has 2 absences of 3 allowed -> "one away" warning territory
-
-    { id: 9, courseId: 2, studentId: 4, date: addDaysISO(-12), status: "Present" },
-    { id: 10, courseId: 2, studentId: 4, date: addDaysISO(-5), status: "Present" },
-
-    { id: 11, courseId: 2, studentId: 7, date: addDaysISO(-12), status: "Absent" },
-    { id: 12, courseId: 2, studentId: 7, date: addDaysISO(-9), status: "Absent" },
-    { id: 13, courseId: 2, studentId: 7, date: addDaysISO(-5), status: "Absent" },
-    { id: 14, courseId: 2, studentId: 7, date: addDaysISO(-2), status: "Absent" },
-    // Kim has 4 absences of 4 allowed -> automatic 5.00 triggered
-
-    { id: 15, courseId: 2, studentId: 5, date: addDaysISO(-12), status: "Present" },
-    { id: 16, courseId: 2, studentId: 5, date: addDaysISO(-5), status: "Excused" },
+    { id: 1, courseId: 1, studentId: 3, date: addDaysISO(-35), status: "Present" },
+    { id: 2, courseId: 1, studentId: 4, date: addDaysISO(-35), status: "Present" },
+    { id: 3, courseId: 1, studentId: 5, date: addDaysISO(-35), status: "Present" },
+    { id: 4, courseId: 1, studentId: 6, date: addDaysISO(-35), status: "Present" },
   ];
 
   return { users, courses, enrollments, categories, items, scores, attendance };
@@ -202,6 +168,20 @@ export function loadData() {
 
 export function saveData(data) {
   localStorage.setItem(DATA_KEY, JSON.stringify(data));
+}
+
+export function exportData() {
+  return loadData();
+}
+
+export function importData(data) {
+  const collections = ["users", "courses", "enrollments", "categories", "items", "scores", "attendance"];
+  if (!data || typeof data !== "object" || collections.some(key => !Array.isArray(data[key]))) {
+    throw new Error("The file does not contain a valid grade-system data export.");
+  }
+
+  localStorage.setItem(DATA_KEY, JSON.stringify(data));
+  return data;
 }
 
 export function resetData() {
