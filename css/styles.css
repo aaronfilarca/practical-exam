@@ -1,0 +1,288 @@
+/* ==========================================================================
+   Comprehensive Academic Grade & CHED Compliance Lookup System
+   Custom styles layered on top of Bootstrap 5
+   ========================================================================== */
+
+:root{
+  --navy:        #16233F;
+  --navy-mid:    #1F3462;
+  --navy-light:  #2E4A88;
+  --gold:        #C89B3C;
+  --gold-dark:   #9C7726;
+  --bg:          #F3F5F8;
+  --surface:     #FFFFFF;
+  --text:        #1B2130;
+  --muted:       #667085;
+  --border:      #E2E6ED;
+  --success:     #2E7D53;
+  --danger:      #B3261E;
+  --warning:     #9C6B0A;
+}
+
+*{ box-sizing: border-box; }
+
+html, body{
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  min-height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--navy);
+}
+
+/* ---------------------------- Navbar ---------------------------- */
+.app-navbar{
+  background: var(--navy);
+  padding-top: .65rem;
+  padding-bottom: .65rem;
+  border-bottom: 3px solid var(--gold);
+}
+
+.app-brand{
+  color: #fff !important;
+  font-weight: 800;
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.app-brand i{ color: var(--gold); font-size: 1.2rem; }
+
+.role-badge{
+  background: rgba(255,255,255,.12);
+  color: #fff;
+  font-weight: 500;
+  padding: .45rem .75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.2);
+}
+.role-badge.role-admin{ border-color: var(--gold); }
+.role-badge.role-professor{ border-color: #7FB0E0; }
+.role-badge.role-student{ border-color: #7FCFA0; }
+
+.quick-switch-bar .dropdown-toggle{
+  border-color: rgba(255,255,255,.35);
+}
+
+.btn-gold{
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #24190A;
+  font-weight: 600;
+}
+.btn-gold:hover{
+  background: var(--gold-dark);
+  border-color: var(--gold-dark);
+  color: #fff;
+}
+
+.app-footer{
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+}
+
+/* ---------------------------- Layout helpers ---------------------------- */
+.section-heading{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: .75rem;
+  margin-bottom: 1rem;
+}
+.section-heading h2, .section-heading h3{ margin: 0; }
+
+.eyebrow{
+  color: var(--muted);
+  font-size: .8rem;
+  font-weight: 600;
+}
+
+/* ---------------------------- Cards ---------------------------- */
+.panel{
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: .5rem;
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+.panel-accent{
+  border-left: 4px solid var(--navy-light);
+}
+.panel-accent-gold{
+  border-left: 4px solid var(--gold);
+}
+
+.kpi-card{
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: .5rem;
+  padding: 1rem 1.25rem;
+  height: 100%;
+}
+.kpi-value{
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.1;
+}
+.kpi-label{
+  color: var(--muted);
+  font-size: .82rem;
+  font-weight: 600;
+}
+.kpi-card.kpi-warning .kpi-value{ color: var(--warning); }
+.kpi-card.kpi-danger .kpi-value{ color: var(--danger); }
+.kpi-card.kpi-success .kpi-value{ color: var(--success); }
+
+.course-dashboard-card{
+  cursor: pointer;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.course-dashboard-card:hover{ border-color: var(--navy-light); }
+.course-dashboard-card:focus-visible{
+  outline: none;
+  border-color: var(--navy-light);
+  box-shadow: 0 0 0 3px rgba(46,74,136,.2);
+}
+.course-dashboard-card.active-course-card{
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px rgba(200,155,60,.25);
+}
+
+/* ---------------------------- Category badges ---------------------------- */
+.category-chip{
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .28rem .65rem;
+  border-radius: 999px;
+  font-size: .78rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+.category-chip .dot{
+  width: .5rem; height: .5rem; border-radius: 50%; display: inline-block;
+}
+
+/* ---------------------------- Numerical/letter grade chip ---------------------------- */
+.grade-chip{
+  display: inline-flex;
+  align-items: center;
+  padding: .3rem .7rem;
+  border-radius: .35rem;
+  font-size: .8rem;
+  font-weight: 700;
+  background: #F1F2F5;
+  color: var(--navy);
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+.grade-chip-pass{
+  background: #EAF7EF;
+  color: var(--success);
+  border-color: transparent;
+}
+.grade-chip-fail{
+  background: #FDEAEA;
+  color: var(--danger);
+  border-color: transparent;
+}
+
+/* deterministic-ish palette rotation for categories */
+.cat-color-0{ background:#EAF1FF; color:#1F3462; } .cat-color-0 .dot{ background:#3D63B8; }
+.cat-color-1{ background:#FDF1E3; color:#8A5A16; } .cat-color-1 .dot{ background:#C89B3C; }
+.cat-color-2{ background:#EAF7EF; color:#1E6B44; } .cat-color-2 .dot{ background:#2E9E63; }
+.cat-color-3{ background:#F6EAFB; color:#6A2C91; } .cat-color-3 .dot{ background:#9C4FCB; }
+.cat-color-4{ background:#FDEAEE; color:#96253F; } .cat-color-4 .dot{ background:#D9486B; }
+
+/* ---------------------------- Status pills ---------------------------- */
+.status-pill{
+  display: inline-block;
+  padding: .22rem .6rem;
+  border-radius: 999px;
+  font-size: .75rem;
+  font-weight: 600;
+}
+.status-present{ background:#EAF7EF; color: var(--success); }
+.status-absent{ background:#FDEAEA; color: var(--danger); }
+.status-excused{ background:#FDF1E3; color: var(--warning); }
+.status-missing{ background:#F1F2F5; color: var(--muted); }
+.status-upcoming{ background:#EAF1FF; color:#1F3462; }
+.status-overdue{ background:#FDEAEA; color: var(--danger); }
+
+/* ---------------------------- Tables ---------------------------- */
+.table-app{
+  background: var(--surface);
+  border-radius: .5rem;
+  overflow: hidden;
+}
+.table-app thead th{
+  background: var(--navy);
+  color: #fff;
+  font-size: .8rem;
+  font-weight: 600;
+  text-transform: none;
+  border: none;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.table-app tbody tr.row-flagged{
+  background: #FFF7EC;
+}
+.table-app tbody tr.row-critical{
+  background: #FDEAEA;
+}
+.table-responsive-app{
+  border-radius: .5rem;
+  border: 1px solid var(--border);
+}
+
+/* weight progress bar for syllabus categories */
+.weight-track{
+  height: .6rem;
+  border-radius: 999px;
+  background: var(--border);
+  overflow: hidden;
+}
+.weight-fill{
+  height: 100%;
+  background: var(--navy-light);
+  transition: width .3s ease;
+}
+.weight-fill.ok{ background: var(--success); }
+.weight-fill.over{ background: var(--danger); }
+
+/* ---------------------------- Misc ---------------------------- */
+.empty-state{ color: var(--muted); }
+
+.filter-bar .form-control,
+.filter-bar .form-select{
+  min-width: 140px;
+}
+
+.course-scope-note{
+  font-size: .82rem;
+  color: var(--muted);
+}
+
+.calc-item-row label{ cursor: pointer; }
+
+.required-note{ font-size: .78rem; color: var(--muted); }
+
+.divider-label{
+  display:flex; align-items:center; gap:.75rem; color: var(--muted);
+  font-size:.78rem; font-weight:600; margin: 1rem 0 .75rem;
+}
+.divider-label::before, .divider-label::after{
+  content:""; flex:1; height:1px; background: var(--border);
+}
+
+@media (max-width: 576px){
+  .kpi-value{ font-size: 1.5rem; }
+}
